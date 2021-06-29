@@ -90,5 +90,6 @@ buildx-setup:
 
 .PHONY: ci
 ci:
-	$(MAKE) build BUILD_FLAGS=$(if $(findstring tags,${GITHUB_REF}),--push,--pull)
-	$(MAKE) build BUILD_FLAGS=$(if $(findstring tags,${GITHUB_REF}),--push,--pull) TAG_REVISION=latest
+	$(MAKE) build BUILD_FLAGS=$(if ${GITHUB_REF},--push,--pull)
+	$(MAKE) build BUILD_FLAGS=$(if ${GITHUB_REF},--push,--pull) TAG_REVISION=latest
+	$(if $(findstring refs/tags,${GITHUB_REF}),$(MAKE) build BUILD_FLAGS=--push TAG_REVISION=$${GITHUB_REF#refs/tags/})
