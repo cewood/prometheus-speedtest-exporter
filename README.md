@@ -1,5 +1,7 @@
 # Prometheus Speedtest Exporter
 
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cewood/prometheus-speedtest-exporter/main)](https://github.com/cewood/prometheus-speedtest-exporter/actions) [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/cewood/prometheus-speedtest-exporter)](https://hub.docker.com/r/cewood/prometheus-speedtest-exporter/tags?page=1&ordering=last_updated) ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cewood/prometheus-speedtest-exporter)
+
 This project is a Docker image that uses [script_exporter](https://github.com/ricoberger/script_exporter) to run a companion script ([speedtest-exporter.sh](speedtest-exporter.sh)), which collects speedtest data using the official [Ookla Speedtest CLI](https://www.speedtest.net/apps/cli) and then renders the results in a [Prometheus](https://prometheus.io/) compatible format. The [cewood/prometheus-speedtest-exporter](https://hub.docker.com/r/cewood/prometheus-speedtest-exporter) docker image is multi-arch image that supports the amd64, arm6, arm7, and arm64 platforms.
 
 
