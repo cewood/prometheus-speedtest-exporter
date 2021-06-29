@@ -1,0 +1,27 @@
+version: "3.4"
+services:
+  prometheus:
+    image: prom/prometheus:v2.28.0
+    container_name: prometheus
+    environment:
+      - "TZ=Europe/Berlin"
+    volumes:
+      - "./prom-example.config:/etc/prometheus/prometheus.yml"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+  speedtest-exporter:
+    image: cewood/prometheus-speedtest-exporter:latest
+    container_name: speedtest-exporter
+    environment:
+      - "SERVER_IDS=1"
+    restart: unless-stopped
+    ports:
+      - "9469:9469"
